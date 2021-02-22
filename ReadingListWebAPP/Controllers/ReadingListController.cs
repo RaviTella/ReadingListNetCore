@@ -10,6 +10,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using ReadingListWebAPP.Models;
 
 namespace ReadingList.Controllers
 {
