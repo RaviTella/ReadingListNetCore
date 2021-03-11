@@ -40,6 +40,31 @@ namespace ReadingList.Controllers
             return View(await _context.Books.ToListAsync());
         }
 
+        private async Task<string> CallAzureFunction(string name)
+        {
+            string azureBaseUrl = "http://localhost:7071/api/Function1";
+            string urlQueryStringParams = $"?name='{name}'";
+
+
+            using (HttpClient client = new HttpClient())
+            {
+                using (HttpResponseMessage res = await client.GetAsync(
+                $"{azureBaseUrl}{urlQueryStringParams}"))
+                {
+                    using (HttpContent content = res.Content)
+                    {
+                        string data = await content.ReadAsStringAsync();
+                        if (data != null)
+                        {
+                            return data;
+                        }
+                        else
+                            return "";
+                    }
+                }
+            }
+        }
+
         // GET: ReadingList/Details/5
         public async Task<IActionResult> Details(long? id)
         {

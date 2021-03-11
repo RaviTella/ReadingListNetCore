@@ -5,69 +5,69 @@
     @if (!Model.Any())
 
     {<div class="row mt-4 justify-content-center">
-        <h3 class="text-center">You have no books in your book list!</h3>
-    </div>
+            <h3 class="text-center">You have no books in your book list!!!</h3>
+        </div>
     }
     <div class="row">
         @if (Model.Any())
         {
 
-        <div class="container">
+            <div class="container">
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="col-xs-1 text-center">
-                            @Html.DisplayNameFor(model => model.Title)
-                        </th>
-                        <th class="col-xs-1 text-center">
-                            @Html.DisplayNameFor(model => model.Author)
-                        </th>
-                        <th class="col-xs-1 text-center">
-                            @Html.DisplayNameFor(model => model.Isbn)
-                        </th>
-                        <th class="col-xs-1 text-center">
-                            @Html.DisplayNameFor(model => model.Description)
-                        </th>
-                        <th class="col-xs-1 text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-1 text-center">
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th class="col-xs-1 text-center">
+                                @Html.DisplayNameFor(model => model.Author)
+                            </th>
+                            <th class="col-xs-1 text-center">
+                                @Html.DisplayNameFor(model => model.Isbn)
+                            </th>
+                            <th class="col-xs-1 text-center">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th class="col-xs-1 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
                         {
 
-                    <tr>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Author)
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Isbn)
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group btn-group-justified">
-                                <a href="@Url.Action("Edit", "ReadingList", new { id = item.ID })" class="btn btn-warning .btn-sm">
-                                    <span class="glyphicon glyphicon-edit"></span>Edit
-                                </a>
-                                <a href="@Url.Action("Delete", "ReadingList", new { id = item.ID })" class="btn btn-danger .btn-sm">
-                                    <span class="glyphicon glyphicon-remove-sign"></span> Remove
-                                </a>
-                            </div>
-                        </td>
+                            <tr>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Author)
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Isbn)
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-justified">
+                                        <a href="@Url.Action("Edit", "ReadingList", new { id = item.ID })" class="btn btn-warning .btn-sm">
+                                            <span class="glyphicon glyphicon-edit"></span>Edit
+                                        </a>
+                                        <a href="@Url.Action("Delete", "ReadingList", new { id = item.ID })" class="btn btn-danger .btn-sm">
+                                            <span class="glyphicon glyphicon-remove-sign"></span> Remove
+                                        </a>
+                                    </div>
+                                </td>
 
-                    </tr>
+                            </tr>
 
                         }
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
 
-        </div>
+            </div>
         }
     </div>
 
@@ -79,18 +79,18 @@
 
         @foreach (dynamic recommendation in ViewBag.Recommendations)
         {
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <form action="/ReadingList/Create" method="post">
-                @Html.AntiForgeryToken()
-                <a class="thumbnail" href="#" onclick="parentNode.submit()">
-                    <img class="img-thumbnail border border-white" src="@recommendation.ImageURL" alt="" />
-                    <input type="hidden" value="@recommendation.Title" id="title" name="title" />
-                    <input type="hidden" value="@recommendation.Author" id="author" name="author" />
-                    <input type="hidden" value="@recommendation.Isbn" id="isbn" name="isbn" />
-                    <input type="hidden" value="@recommendation.Description" id="description" name="description" />
-                </a>
-            </form>
-        </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <form action="/ReadingList/Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <a class="thumbnail" href="#" onclick="parentNode.submit()">
+                        <img class="img-thumbnail border border-white" src="@recommendation.ImageURL" alt="" />
+                        <input type="hidden" value="@recommendation.Title" id="title" name="title" />
+                        <input type="hidden" value="@recommendation.Author" id="author" name="author" />
+                        <input type="hidden" value="@recommendation.Isbn" id="isbn" name="isbn" />
+                        <input type="hidden" value="@recommendation.Description" id="description" name="description" />
+                    </a>
+                </form>
+            </div>
 
         }
 
